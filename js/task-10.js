@@ -6,6 +6,7 @@ function getRandomHexColor() {
 
 const boxesRef = document.querySelector('#boxes')
 const controlsRef = document.querySelector('#controls')
+const inputRef = document.querySelector('input')
 
 function createBoxes(amount) {
 
@@ -25,22 +26,21 @@ function createBoxes(amount) {
 function destroyBoxes() {
   boxesRef.remove()
 }
+let value = 0;
+const onInputValue = (event) => {
+    value = inputRef.value;
+}
 
+inputRef.addEventListener('input', onInputValue)
 
-controlsRef.children[0].addEventListener('input', () => {
+// console.log(onInputValue);
 
-  const valueInput = controlsRef.children[0].value
+controlsRef.children[1].addEventListener('click', (event) => {
+  createBoxes(value)   
+})
 
-  controlsRef.children[1].addEventListener('click', (event) => {
-  createBoxes(valueInput)   
-  })
-
-  controlsRef.children[2].addEventListener('click', (event) => {
-    destroyBoxes()
-  })
-
-});
-
-
+controlsRef.children[2].addEventListener('click', (event) => {
+  destroyBoxes()
+})
 
 

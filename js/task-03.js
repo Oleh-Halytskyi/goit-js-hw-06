@@ -16,11 +16,18 @@ const images = [
 
 const gallery = document.querySelector('.gallery');
 
-const createGallery = (images) => {
-  images.forEach(img => {
-    gallery.insertAdjacentHTML("beforeend", `<li class = 'gallery__item'><img  src="${img.url}" alt="${img.alt}" ></li>`)
-  });
-}
+// const createGallery = (images) => {
+//   images.forEach(img => {
+//     gallery.insertAdjacentHTML("beforeend", `<li class = 'gallery__item'><img  src="${img.url}" alt="${img.alt}" ></li>`)
+//   });
+// }
+// createGallery(images)
 
-createGallery(images)
+const elementsGallery = images.map(img => {
+    return `<li class = 'gallery__item'><img  src="${img.url}" alt="${img.alt}" ></li>`
+})
+
+
+gallery.insertAdjacentHTML("beforeend", elementsGallery)
+
 console.log(gallery);
